@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Simple Chat Using Socket.io</title>
 
@@ -45,10 +46,12 @@
             flex-grow: 1;
         }
     </style>
+
+    <script src="/socket.io/socket.io.js"></script>
+
 </head>
 
 <body>
-
 
     <div id="message-container"></div>
     <form id="send-container">
@@ -56,11 +59,12 @@
         <button type="submit" id="send-button">Send</button>
     </form>
 
+    <!-- <script src="chat-script.js"></script> -->
 
-    <script defer src="http://localhost:4040/socket.io/socket.io.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+    <!-- <script defer src="http://localhost:4040/socket.io/socket.io.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script> -->
     <script>
-        const socket = io("http://localhost:4040/");
+        const socket = io();
 
         const messageContainer = document.getElementById('message-container')
         const messageForm = document.getElementById('send-container')

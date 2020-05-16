@@ -1,6 +1,4 @@
-// import { PORT } from '../config';
-
-const socket = io("http://localhost:4040");
+const socket = io();
 
 const messageContainer = document.getElementById('message-container')
 const messageForm = document.getElementById('send-container')
