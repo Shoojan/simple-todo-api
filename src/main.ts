@@ -6,8 +6,8 @@ import { envs } from '../config';
 
 import * as socketio from "socket.io";
 
-const PORT = envs.PORT;
-const MONGO_URI = `mongodb+srv://${envs.DB_USERNAME}:${envs.DB_PASSWORD}@cluster-15052020-5z1vx.mongodb.net/test?retryWrites=true&w=majority`;
+const PORT = process.env.PORT || envs.PORT;
+const MONGO_URI = process.env.MONGO_URI || envs.MONGO_URI;
 const server = http.createServer(appRoute);
 server.listen(PORT);
 server.on('listening', async () => {
