@@ -34,4 +34,8 @@ appRoute.get("/", (req: any, res: any) => {
 	res.sendFile(path.resolve("./client/index.html"));
 });
 
+appRoute.get("/chatbox", (req: any, res: any) => {
+	res.sendFile(path.resolve("./client/chatbox.html"));
+});
+
 export { appRoute };

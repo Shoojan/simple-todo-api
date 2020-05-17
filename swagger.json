@@ -188,18 +188,10 @@
 				"parameters": [
 					{
 						"in": "body",
-						"name": "body",
+						"name": "user",
+						"required": true,
 						"schema": {
-							"properties": {
-								"user": {
-									"$ref": "#/definitions/IUser"
-								}
-							},
-							"title": "CreateBody",
-							"type": "object",
-							"required": [
-								"user"
-							]
+							"$ref": "#/definitions/IUser"
 						}
 					}
 				]
@@ -223,18 +215,10 @@
 				"parameters": [
 					{
 						"in": "body",
-						"name": "body",
+						"name": "user",
+						"required": true,
 						"schema": {
-							"properties": {
-								"user": {
-									"$ref": "#/definitions/IUser"
-								}
-							},
-							"title": "LoginBody",
-							"type": "object",
-							"required": [
-								"user"
-							]
+							"$ref": "#/definitions/IUser"
 						}
 					}
 				]
@@ -261,18 +245,10 @@
 					},
 					{
 						"in": "body",
-						"name": "body",
+						"name": "user",
+						"required": true,
 						"schema": {
-							"properties": {
-								"user": {
-									"$ref": "#/definitions/IUser"
-								}
-							},
-							"title": "UpdateBody",
-							"type": "object",
-							"required": [
-								"user"
-							]
+							"$ref": "#/definitions/IUser"
 						}
 					}
 				]

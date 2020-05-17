@@ -118,7 +118,7 @@ export function RegisterRoutes(app: express.Express) {
     app.post('/user/register',
         function(request: any, response: any, next: any) {
             const args = {
-                user: { "in": "body-prop", "name": "user", "required": true, "ref": "IUser" },
+                user: { "in": "body", "name": "user", "required": true, "ref": "IUser" },
             };
 
             let validatedArgs: any[] = [];
@@ -137,7 +137,7 @@ export function RegisterRoutes(app: express.Express) {
     app.post('/user/login',
         function(request: any, response: any, next: any) {
             const args = {
-                user: { "in": "body-prop", "name": "user", "required": true, "ref": "IUser" },
+                user: { "in": "body", "name": "user", "required": true, "ref": "IUser" },
             };
 
             let validatedArgs: any[] = [];
@@ -157,7 +157,7 @@ export function RegisterRoutes(app: express.Express) {
         function(request: any, response: any, next: any) {
             const args = {
                 id: { "in": "path", "name": "id", "required": true, "dataType": "string" },
-                user: { "in": "body-prop", "name": "user", "required": true, "ref": "IUser" },
+                user: { "in": "body", "name": "user", "required": true, "ref": "IUser" },
             };
 
             let validatedArgs: any[] = [];

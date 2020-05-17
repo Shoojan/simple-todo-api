@@ -7,101 +7,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Simple Chat Using Socket.io</title>
 
-    <!-- <script defer src="http://localhost:4040/socket.io/socket.io.js"></script>
-    <script defer src="script.js"></script> -->
-
     <style>
-        body {
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
+        .login-form {
+            width: 300px;
+            margin: 0 auto;
+            font-family: Tahoma, Geneva, sans-serif;
         }
 
-        #message-container {
-            width: 80%;
-            max-width: 1200px;
+        .login-form h1 {
+            text-align: center;
+            color: #4d4d4d;
+            font-size: 24px;
+            padding: 20px 0 20px 0;
         }
 
-        #message-container div {
-            background-color: #CCC;
-            padding: 5px;
+        .login-form input[type="password"],
+        .login-form input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #dddddd;
+            margin-bottom: 15px;
+            box-sizing: border-box;
         }
 
-        #message-container div:nth-child(2n) {
-            background-color: #FFF;
-        }
-
-        #send-container {
-            position: fixed;
-            padding-bottom: 30px;
-            bottom: 0;
-            background-color: white;
-            max-width: 1200px;
-            width: 80%;
-            display: flex;
-        }
-
-        #message-input {
-            flex-grow: 1;
+        .login-form input[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            background-color: #535b63;
+            border: 0;
+            box-sizing: border-box;
+            cursor: pointer;
+            font-weight: bold;
+            color: #ffffff;
         }
     </style>
-
-    <script src="/socket.io/socket.io.js"></script>
 
 </head>
 
 <body>
-
-    <div id="message-container"></div>
-    <form id="send-container">
-        <input type="text" id="message-input">
-        <button type="submit" id="send-button">Send</button>
-    </form>
-
-    <!-- <script src="chat-script.js"></script> -->
-
-    <!-- <script defer src="http://localhost:4040/socket.io/socket.io.js"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script> -->
-    <script>
-        const socket = io();
-
-        const messageContainer = document.getElementById('message-container')
-        const messageForm = document.getElementById('send-container')
-        const messageInput = document.getElementById('message-input')
-
-        const name = prompt('What is your name?')
-        appendMessage('You joined')
-        socket.emit('new-user', name)
-
-        socket.on('chat-message', data => {
-            appendMessage(`${data.name}: ${data.message}`)
-        })
-
-        socket.on('user-connected', name => {
-            appendMessage(`${name} connected`)
-        })
-
-        socket.on('user-disconnected', name => {
-            appendMessage(`${name} disconnected`)
-        })
-
-        messageForm.addEventListener('submit', e => {
-            e.preventDefault()
-            const message = messageInput.value
-            appendMessage(`You: ${message}`)
-            socket.emit('send-chat-message', message)
-            messageInput.value = ''
-        })
-
-        function appendMessage(message) {
-            const messageElement = document.createElement('div')
-            messageElement.innerText = message
-            messageContainer.append(messageElement)
-        }
-
-    </script>
-
+    <div class="login-form">
+        <h1>Login Form</h1>
+        <form action="user/login" method="POST">
+            <input type="text" id="name" name="name" placeholder="Name" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="submit">
+        </form>
+    </div>
+    
 </body>
 
 </html>

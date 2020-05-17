@@ -1,5 +1,5 @@
 import { UserModel, IUser } from '../model/user';
-import { Controller, Route, Get, Post, BodyProp, Put, Delete } from 'tsoa';
+import { Controller, Route, Get, Post, Body, Put, Delete } from 'tsoa';
 
 @Route('/user')
 export class UserController extends Controller {
@@ -16,7 +16,7 @@ export class UserController extends Controller {
     }
 
     @Post('/register')
-    public async create(@BodyProp() user: IUser): Promise<void> {
+    public async create(@Body() user: IUser): Promise<void> {
         const item = new UserModel({
             name: user.name,
             password: user.password
@@ -25,7 +25,7 @@ export class UserController extends Controller {
     }
 
     @Post('/login')
-    public async login(@BodyProp() user: IUser): Promise<IUser> {
+    public async login(@Body() user: IUser): Promise<IUser> {
         let activeUser: any = await UserModel.findOne({ name: user.name, password: user.password });
         if (activeUser) {
             return activeUser;
@@ -36,7 +36,7 @@ export class UserController extends Controller {
     }
 
     @Put('/{id}')
-    public async update(id: string, @BodyProp() user: IUser): Promise<void> {
+    public async update(id: string, @Body() user: IUser): Promise<void> {
         await UserModel.findOneAndUpdate(
             { _id: id },
             {
