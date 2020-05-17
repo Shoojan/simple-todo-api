@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -x ts-node src/main.ts",
-    "generate": "tsoa routes && tsoa swagger"
+    "generate": "tsoa routes && tsoa swagger",
+    "start": "ts-node src/main.ts",
+    "dev": "nodemon -x ts-node src/main.ts"
   },
   "author": "",
   "license": "ISC",

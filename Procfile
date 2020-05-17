@@ -1,1 +1,1 @@
-web: tsoa routes && tsoa swagger && ts-node src/main.ts
+web: ts-node src/main.ts
