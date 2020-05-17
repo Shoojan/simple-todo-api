@@ -1,0 +1,41 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const app_1 = require("./app");
+const http = require("http");
+const mongoose = require("mongoose");
+const config_1 = require("../config");
+const socketio = require("socket.io");
+const PORT = process.env.PORT || config_1.envs.PORT;
+const MONGO_URI = process.env.MONGO_URI || config_1.envs.MONGO_URI;
+const server = http.createServer(app_1.appRoute);
+server.listen(PORT);
+server.on('listening', async () => {
+    console.info(`Listening on port ${PORT}`);
+    mongoose.connect(MONGO_URI, { useNewUrlParser: true, useFindAndModify: false });
+    mongoose.connection.on('open', () => {
+        console.info('Connected to Mongo.');
+    });
+    mongoose.connection.on('error', (err) => {
+        console.error(err);
+    });
+});
+// set up socket.io and bind it to our
+// http server.
+let io = socketio(server);
+const users = {};
+// whenever a user connects on port via a websocket, log that a user has connected
+io.on("connection", (socket) => {
+    console.log("User connected");
+    socket.on('new-user', (name) => {
+        users[socket.id] = name;
+        socket.broadcast.emit('user-connected', name);
+    });
+    socket.on('send-chat-message', (message) => {
+        socket.broadcast.emit('chat-message', { message: message, name: users[socket.id] });
+    });
+    socket.on('disconnect', () => {
+        socket.broadcast.emit('user-disconnected', users[socket.id]);
+        delete users[socket.id];
+    });
+});
+//# sourceMappingURL=main.js.map
