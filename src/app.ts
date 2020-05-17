@@ -30,11 +30,7 @@ try {
 	console.error('Unable to read swagger.json', err);
 }
 
-
-// simple '/' endpoint sending a Hello World
-// response
 appRoute.get("/", (req: any, res: any) => {
-	// res.send("hello world");
 	res.sendFile(path.resolve("./client/index.html"));
 });
 

@@ -13,8 +13,7 @@
 		/* Redirect output structure to the directory. */
 		"outDir": "./build",
 		/* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
-		"rootDir": "",
-		"allowJs": false
+		"rootDir": ""
 	},
 	"include": [
 		"src/**/*.ts" /* Include every ts file in source folder */
